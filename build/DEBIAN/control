@@ -1,0 +1,8 @@
+Package: battleship
+Version: 1.0
+Section: games
+Priority: optional
+Architecture: amd64
+Maintainer: Your Name <your.email@example.com>
+Description: Battleship game
+ A simple Battleship game implemented in C++.

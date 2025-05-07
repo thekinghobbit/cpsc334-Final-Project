@@ -1,0 +1,7 @@
+#include <catch2/catch.hpp>
+#include "battleship.h"
+
+TEST_CASE("Test functionality of Battleship") {
+    // Add your test cases here
+    REQUIRE(true == true); // Example test case
+}
