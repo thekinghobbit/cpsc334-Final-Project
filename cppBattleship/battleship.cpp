@@ -170,41 +170,18 @@ void getCoordinates(vector<int> &vec){
 
 }
 // checks the field for hits and marks hits and misses on the playboard displayed to the user
-void checkField(vector<int> &vec){
-    if(&vec){
-        cout << "Please select a valid coordinate\n";
-        sleep(1);
-        return;
-    }
-    int x = vec[0];
-    int y = vec[1];
-    ATTEMPTS += 1;
-    cout <<" in hit\n";
-    if(currentPlayPen[x][y] != '-'){
-        if(currentPlayPen[x][y] == 'c'){
-            carrierHits.pop_back();
-        }
-        else if(currentPlayPen[x][y] == 's'){
-            submarineHits.pop_back();
-        }
-        else if(currentPlayPen[x][y] == 'd'){
-            destroyerHits.pop_back();
-        }
-        else if(currentPlayPen[x][y] == 'C'){
-            crusierHits.pop_back();
-        }
-        else if(currentPlayPen[x][y] == 'b'){
-            battleshipHits.pop_back();
-        }
-        showOptions[x+1][y+1] = 'H';
-        currentPlayPen[x][y] = 'x';
-        vec.clear();
-    }
-    else{
-        showOptions[x+1][y+1] = 'M';
-        vec.clear();
+void checkField(vector<int> &attempt) {
+    int x = attempt[0];
+    int y = attempt[1];
+
+    if (currentPlayPen[x][y] == 'c' || currentPlayPen[x][y] == 'b' || currentPlayPen[x][y] == 'd' || currentPlayPen[x][y] == 's') {
+        currentPlayPen[x][y] = 'x'; // Mark as hit
+        showOptions[x + 1][y + 1] = 'H'; // Update showOptions to indicate a hit
+    } else {
+        showOptions[x + 1][y + 1] = 'M'; // Update showOptions to indicate a miss
     }
 
+    attempt.clear(); // Clear the attempt vector
 }
 // sets the current field that the user selects in the pickField()
 void currentField(char arr[10][10], char arr2[10][10]){
